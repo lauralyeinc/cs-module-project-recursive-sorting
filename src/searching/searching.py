@@ -29,4 +29,35 @@ def binary_search(arr, target, start, end):
 # or iteratively
 def agnostic_binary_search(arr, target):
     # Your code here
-    pass 
+    #sorted or not?, set up true or false if the array is in order
+    # compare index 0 with index 1 of array
+    if arr[0] > arr[-1]:
+        is_ascending = False
+    else:
+        is_ascending = True
+    # if the input array is ascending,c all 'binary_search' with the arry and target wanted
+    if is_ascending:
+        return binary_search(arr, target, 0 ,len(arr) - 1)
+        #pass 
+    # else call 
+    else:
+        return descending_binary_search(arr, target, 0, len(arr)-1)
+
+
+#more practice, 😄
+#setting up a desending_binary_search 
+# lowest to highest 
+def descending_binary_search(arr, target, left, right):
+    #base case 
+    if left > right:
+        return -1 
+    # this part is half done? the return above is keeping up with the lenght only, but not the index/elements. 
+    else: 
+        mid_point = (left + right) // 2
+
+        if arr[mid_point] == target:
+            return mid_point
+        elif arr[mid_point] < target:
+            return descending_binary_search(arr, target, left, mid_point -1)
+        else: 
+            return descending_binary_search(arr, target, mid_point + 1, right, )
